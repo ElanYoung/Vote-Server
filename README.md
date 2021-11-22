@@ -1,2 +1,3 @@
 # Vote-Server
-📩 基于SpringBoot框架开发的uni-app投票小程序后端
+
+📩 基于SpringBoot框架开发的投票系统小程序后端
