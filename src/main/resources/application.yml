@@ -1,0 +1,33 @@
+#主配置文件
+
+server:
+  # 服务端口
+  port: 8080
+
+spring:
+  # 文件编码 UTF8
+  mandatory-file-encoding: UTF-8
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/vote?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF8
+    username: "root"
+    password: "123456"
+
+mybatis-plus:
+  configuration:
+    # 开启下划线转驼峰
+    map-underscore-to-camel-case: true
+    # 指定默认枚举类型的类型转换器
+    default-enum-type-handler: com.baomidou.mybatisplus.extension.handlers.MybatisEnumTypeHandler
+    # 日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    # 开启/关闭 banner 打印
+    banner: false
+    db-config:
+      # 逻辑删除（软删除）
+      logic-delete-value: NOW()
+      logic-not-delete-value: 'NULL'
+  # mapper路径位置
+  mapper-locations: classpath:mapper/*.xml
