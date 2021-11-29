@@ -19,14 +19,14 @@ public class UserController {
     UserMapper userMapper;
 
     @RequestMapping("/login")
-//    public String login(@RequestBody LoginDTO dto) {
-//        System.out.println("nickName:"+dto.getNickName());
-//        return null;
-//    }
-    public String login(@RequestParam("nickName") String nickName) {
-        System.out.println(nickName);
-//        System.out.println(gender);
+    public String login(@RequestBody LoginDTO dto) {
+        System.out.println("nickName:"+dto.getNickName());
         return null;
     }
+//    public String login(@RequestParam String nickName) {
+//        System.out.println(nickName);
+////        System.out.println(gender);
+//        return null;
+//    }
 
 }
