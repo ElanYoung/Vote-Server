@@ -1,8 +1,12 @@
 package com.starimmortal.vote.controller.v1;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cn.hutool.json.JSON;
+import com.starimmortal.vote.dto.LoginDTO;
+import com.starimmortal.vote.mapper.UserMapper;
+import com.starimmortal.vote.pojo.UserDO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author generator@StarImmortal
@@ -11,5 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
+    @Autowired
+    UserMapper userMapper;
+
+    @PostMapping("/login")
+//    @ResponseBody
+//    public String login(@RequestBody LoginDTO dto) {
+//        System.out.println("nickName:"+dto.getNickName());
+//        return null;
+//    }
+    public String login(@RequestParam(value = "nickName", required = false) String nickName) {
+        System.out.println(nickName);
+        return null;
+    }
 
 }

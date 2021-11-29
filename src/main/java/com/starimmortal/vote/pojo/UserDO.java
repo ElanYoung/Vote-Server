@@ -1,9 +1,6 @@
 package com.starimmortal.vote.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -13,40 +10,53 @@ import java.util.Date;
  * @date 2021/04/10
  */
 @Data
-@TableName("user")
+@TableName("tb_user")
 public class UserDO {
 
+    //type = IdType.AUTO 主键自增策略(必须在sql中设置主键自增开启)
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 用户名
+     * 用户唯一标识
      */
-    private String username;
+    private String openid;
 
     /**
-     * 密码
+     * 用户在开放平台的唯一标识符
      */
-    private String password;
+    private String unionid;
+
+    /**
+     * 昵称
+     */
+    private String nickname;
 
     /**
      * 头像
      */
-    private String avatar;
+    private String avatar_url;
 
     /**
-     * 邮箱
+     * 会话密钥
      */
-    private String email;
+    private String session_key;
+
+    /**
+     * 微信用户资料
+     */
+    private String wx_profile;
 
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
     /**
