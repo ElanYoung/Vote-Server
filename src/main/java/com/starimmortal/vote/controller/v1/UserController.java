@@ -24,8 +24,10 @@ public class UserController {
 //        System.out.println("nickName:"+dto.getNickName());
 //        return null;
 //    }
-    public String login(@RequestParam(value = "nickName", required = false) String nickName) {
+    public String login(@RequestParam(value = "nickName", required = false) String nickName,
+                        @RequestParam(value = "gender", required = false) int gender) {
         System.out.println(nickName);
+        System.out.println(gender);
         return null;
     }
 
