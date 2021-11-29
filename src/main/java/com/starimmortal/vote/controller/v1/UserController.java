@@ -18,16 +18,14 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
-    @PostMapping("/login")
-//    @ResponseBody
+    @RequestMapping("/login")
 //    public String login(@RequestBody LoginDTO dto) {
 //        System.out.println("nickName:"+dto.getNickName());
 //        return null;
 //    }
-    public String login(@RequestParam(value = "nickName", required = false) String nickName,
-                        @RequestParam(value = "gender", required = false) int gender) {
+    public String login(@RequestParam("nickName") String nickName) {
         System.out.println(nickName);
-        System.out.println(gender);
+//        System.out.println(gender);
         return null;
     }
 

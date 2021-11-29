@@ -2,7 +2,7 @@
 
 server:
   # 服务端口
-  port: 8081
+  port: 8080
 
 spring:
   # 文件编码 UTF8
