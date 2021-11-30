@@ -10,9 +10,10 @@ import lombok.Data;
 public class LoginDTO {
     private String openid;
     private String unionid;
-    private String nickName;
-    private String avatar_url;
-    private String session_key;
-    private String wx_profile;
+    private String nickname;
+    private String avatarUrl;
+    private String sessionKey;
+    private UpdateWxInfo wxProfile;
+    private String code;
 
 }

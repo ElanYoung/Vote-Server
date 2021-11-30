@@ -2,15 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.starimmortal.vote.mapper.UserMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.starimmortal.vote.pojo.UserDO">
-        <id column="id" property="id" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
-        <result column="username" property="username" />
-        <result column="password" property="password" />
-        <result column="avatar" property="avatar" />
-        <result column="email" property="email" />
-    </resultMap>
+    <!--    &lt;!&ndash; 通用查询映射结果 &ndash;&gt;-->
+    <!--    <resultMap id="BaseResultMap" type="com.starimmortal.vote.pojo.UserDO">-->
+    <!--        <id column="id" property="id" />-->
+    <!--        <result column="create_time" property="createTime" />-->
+    <!--        <result column="update_time" property="updateTime" />-->
+    <!--        <result column="username" property="username" />-->
+    <!--        <result column="password" property="password" />-->
+    <!--        <result column="avatar" property="avatar" />-->
+    <!--        <result column="email" property="email" />-->
+    <!--    </resultMap>-->
 
+
+    <select id="selectByOpenid" resultType="com.starimmortal.vote.pojo.UserDO">
+        select openid
+        from tb_user
+        where openid = #{openid}
+    </select>
 </mapper>

@@ -21,7 +21,7 @@ public class SampleTest {
         userDO.setOpenid(uuid.toString());
         userDO.setUnionid("321");
         userDO.setNickname("纸素1234567");
-        userDO.setAvatar_url("https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEIhzpfcHpNvXY8oFxfPZicdHD4NHwfTTavlXCxaIkia62PHslMgicVOqcmDf18DulffPzK1dxOias3aWQ/132");
+        userDO.setAvatarUrl("https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEIhzpfcHpNvXY8oFxfPZicdHD4NHwfTTavlXCxaIkia62PHslMgicVOqcmDf18DulffPzK1dxOias3aWQ/132");
         int insert = userService.getBaseMapper().insert(userDO);
 
 //        userService.updateById(userDO);

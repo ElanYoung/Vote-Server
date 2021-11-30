@@ -35,17 +35,17 @@ public class UserDO {
     /**
      * 头像
      */
-    private String avatar_url;
+    private String avatarUrl;
 
     /**
      * 会话密钥
      */
-    private String session_key;
+    private String sessionKey;
 
     /**
      * 微信用户资料
      */
-    private String wx_profile;
+    private String wxProfile;
 
     /**
      * 创建时间

@@ -4,7 +4,10 @@ import com.starimmortal.vote.pojo.UserDO;
 import com.starimmortal.vote.mapper.UserMapper;
 import com.starimmortal.vote.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService {
+    @Autowired
+    private UserMapper userMapper;
 
+
+    @Override
+    public UserDO selectByOpenid(String openid) {
+        return userMapper.selectByOpenid(openid);
+    }
 }

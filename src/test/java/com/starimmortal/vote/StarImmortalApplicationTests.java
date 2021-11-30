@@ -18,7 +18,7 @@ class StarImmortalApplicationTests {
 		userDO.setOpenid("123");
 		userDO.setUnionid("321");
 		userDO.setNickname("纸素");
-		userDO.setAvatar_url("https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEIhzpfcHpNvXY8oFxfPZicdHD4NHwfTTavlXCxaIkia62PHslMgicVOqcmDf18DulffPzK1dxOias3aWQ/132");
+		userDO.setAvatarUrl("https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEIhzpfcHpNvXY8oFxfPZicdHD4NHwfTTavlXCxaIkia62PHslMgicVOqcmDf18DulffPzK1dxOias3aWQ/132");
 		int insert = userService.getBaseMapper().insert(userDO);
 		if(insert>0){
 			System.out.println("insert success");
