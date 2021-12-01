@@ -13,9 +13,13 @@
     <!--        <result column="email" property="email" />-->
     <!--    </resultMap>-->
 
+    <sql id="Base_Column_List">
+        id, openid, unionid, nickname, avatar_url, session_key, wx_profile, create_time, update_time,delete_time
+    </sql>
 
     <select id="selectByOpenid" resultType="com.starimmortal.vote.pojo.UserDO">
-        select openid
+        select
+        <include refid="Base_Column_List"></include>
         from tb_user
         where openid = #{openid}
     </select>
