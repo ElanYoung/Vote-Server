@@ -5,8 +5,6 @@ import com.starimmortal.vote.pojo.UserDO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.starimmortal.vote.vo.UnifyResponseVO;
 
-import java.util.List;
-
 /**
  * <p>
  *  用户服务类

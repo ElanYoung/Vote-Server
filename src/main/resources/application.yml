@@ -10,7 +10,7 @@ spring:
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/vote?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF8
+    url: jdbc:mysql://127.0.0.1:3306/vote?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF8&allowPublicKeyRetrieval=true
     username: "root"
     password: "123456"
 

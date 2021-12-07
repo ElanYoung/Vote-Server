@@ -1,26 +1,23 @@
 package com.starimmortal.vote.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.starimmortal.vote.dto.LoginDTO;
 import com.starimmortal.vote.pojo.UserDO;
+import com.starimmortal.vote.pojo.VoteDO;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * <p>
- *  用户 Mapper 接口
+ *  投票详情 Vote 接口
  * </p>
  *
  * @author generator@StarImmortal
  * @date 2021/04/10
  */
 @Repository
-public interface UserMapper extends BaseMapper<UserDO> {
+public interface VoteMapper extends BaseMapper<VoteDO> {
     /**
-     * 搜索判断该用户是否存在
-     * @param openid
-     * @return
+     * 查询openid对应的tb_user中对应id
      */
-    UserDO selectByOpenid(String openid);
+     Integer selectUserIdByOpenId(String openid);
+
 }
