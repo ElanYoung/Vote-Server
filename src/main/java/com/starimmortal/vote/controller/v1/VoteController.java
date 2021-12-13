@@ -22,11 +22,10 @@ public class VoteController {
     VoteService voteService;
 
     @RequestMapping("/saveDraft")
-    public UnifyResponseVO<VoteDO> test(@RequestBody VoteFirstDTO voteFirstDTO) throws Exception {
+    public UnifyResponseVO<VoteDO> save(@RequestBody VoteFirstDTO voteFirstDTO) throws Exception {
         //调用service层
         UnifyResponseVO<VoteDO> voteDOUnifyResponseVO = voteService.SaveVote(voteFirstDTO);
         return voteDOUnifyResponseVO;
 
     }
-
 }
