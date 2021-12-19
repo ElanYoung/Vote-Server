@@ -1,35 +1,33 @@
 package com.starimmortal.vote.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.starimmortal.vote.dto.LoginDTO;
 import com.starimmortal.vote.dto.VoteAllDTO;
 import com.starimmortal.vote.dto.VoteFirstDTO;
 import com.starimmortal.vote.dto.VoteNextDTO;
-import com.starimmortal.vote.pojo.UserDO;
 import com.starimmortal.vote.pojo.VoteDO;
 import com.starimmortal.vote.pojo.VoteDraftDO;
 import com.starimmortal.vote.vo.UnifyResponseVO;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
-
 /**
- * 投票详情类
+ * 投票详情类 草稿
  */
 
-public interface VoteService extends IService<VoteDO>{
+public interface VoteDraftService extends IService<VoteDraftDO>{
 
     /**
-     * 成功传入
-     * @param voteAllDTO
+     * 存第一个界面数据入数据库
+     * @param voteFirstDTO
      * @return
      * @throws Exception
      */
-    UnifyResponseVO<VoteDO> SaveAllVote(VoteAllDTO voteAllDTO) throws Exception;
+    UnifyResponseVO<VoteDraftDO> SaveVote(VoteFirstDTO voteFirstDTO) throws Exception;
 
     /**
-     * 列举所有数据
+     * 存第二个界面数据入数据库
+     * @param voteNextDTO
      * @return
+     * @throws Exception
      */
-    UnifyResponseVO<List<VoteDO>> ListVoteData();
+    UnifyResponseVO<VoteDraftDO> SaveNextVote(VoteNextDTO voteNextDTO) throws Exception;
+
 }

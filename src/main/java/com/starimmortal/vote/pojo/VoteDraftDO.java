@@ -4,14 +4,13 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
- * 投票表实体对象
+ * 投票草稿表实体类
  */
 @Data
-@TableName("tb_vote")
-public class VoteDO {
+@TableName("tb_vote_draft")
+public class VoteDraftDO {
 
     //type = IdType.AUTO 主键自增策略(必须在sql中设置主键自增开启)
     @TableId(value = "id", type = IdType.AUTO)
@@ -81,7 +80,7 @@ public class VoteDO {
      * 结束时间
      */
     private Date endTime;
-
+    
     /**
      * 创建时间
      */
@@ -99,10 +98,4 @@ public class VoteDO {
      */
     @TableLogic
     private Date deleteTime;
-
-    /**
-     * 投票对应的图片
-     */
-    @TableField(exist = false)
-    private List<VoteImgDO> voteImgs;
 }

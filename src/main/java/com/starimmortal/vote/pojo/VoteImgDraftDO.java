@@ -6,11 +6,11 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 投票表图片实体类
+ * 投票表图片草稿实体类
  */
 @Data
-@TableName("tb_vote_img")
-public class VoteImgDO {
+@TableName("tb_vote_img_draft")
+public class VoteImgDraftDO {
     /**
      * id
      */

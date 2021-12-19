@@ -2,19 +2,23 @@ package com.starimmortal.vote.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 /**
- * 创建投票第一个界面
+ * 成功创建
  */
 @Data
-public class VoteFirstDTO {
+public class VoteAllDTO {
+    //第二个界面独有的
+    private String voteLimit;
+    private Integer voteNumLimit;
+    private String description;
+    private String snapVote; //TODO 进行中 未做 死数据
+    //第一个界面独有的
     private String openid;
     private String name;
     private Integer categoryId;
-    private String snapVote; //TODO 进行中 未做 死数据
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Date startTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
@@ -24,5 +28,5 @@ public class VoteFirstDTO {
      * 所有图片的路径
      */
     private String[] imageList;
-    //TODO 模板之后设计
+
 }

@@ -12,4 +12,54 @@
         where openid = #{openid};
     </select>
 
+    <select id="selectVoteAllData" resultMap="VoteAndImage">
+        select v.id vid,
+               v.user_id vuser_id,
+               v.category_id vcategory_id,
+               v.name vname,
+               v.total_turnout vtotal_turnout,
+               v.vote_total vvote_total,
+               v.visit_num vvisit_num,
+               v.vote_limit vvote_limit,
+               v.vote_num_limit vvote_num_limit,
+               v.description vdescription,
+               v.snap_vote vsnap_vote,
+               v.start_time vstart_time,
+               v.end_time vend_time,
+               v.create_time vcreate_time,
+               v.update_time vupdate_time,
+               v.delete_time vdelete_time,
+               i.id iid,
+               i.vote_id ivote_id,
+               i.image iimage
+        from tb_vote v,
+             tb_vote_img i
+        where v.id = i.vote_id
+    </select>
+
+    <resultMap id="VoteAndImage" type="com.starimmortal.vote.pojo.VoteDO">
+        <result property="id" column="vid"/>
+        <result property="userId" column="vuser_id"/>
+        <result property="categoryId" column="vcategory_id"/>
+        <result property="name" column="vname"/>
+        <result property="totalTurnout" column="vtotal_turnout"/>
+        <result property="voteTotal" column="vvote_total"/>
+        <result property="visitNum" column="vvisit_num"/>
+        <result property="voteLimit" column="vvote_limit"/>
+        <result property="voteNumLimit" column="vvote_num_limit"/>
+        <result property="description" column="vdescription"/>
+        <result property="snapVote" column="vsnap_vote"/>
+        <result property="startTime" column="vstart_time"/>
+        <result property="endTime" column="vend_time"/>
+        <result property="createTime" column="vcreate_time"/>
+        <result property="updateTime" column="vupdate_time"/>
+        <result property="deleteTime" column="vdelete_time"/>
+
+        <collection property="voteImgs" ofType="com.starimmortal.vote.pojo.VoteImgDO">
+            <result property="id" column="iid"/>
+            <result property="voteId" column="ivote_id"/>
+            <result property="image" column="iimage"/>
+        </collection>
+    </resultMap>
+
 </mapper>
