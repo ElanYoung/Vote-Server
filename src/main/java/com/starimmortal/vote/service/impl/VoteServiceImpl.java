@@ -68,6 +68,10 @@ public class VoteServiceImpl extends ServiceImpl<VoteMapper, VoteDO> implements 
         }
     }
 
+    /**
+     * 显示所有投票信息
+     * @return
+     */
     @Override
     public UnifyResponseVO<List<VoteDO>> ListVoteData() {
 //        List<VoteDO> list = this.list();

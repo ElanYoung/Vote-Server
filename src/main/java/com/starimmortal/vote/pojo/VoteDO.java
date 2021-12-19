@@ -104,5 +104,5 @@ public class VoteDO {
      * 投票对应的图片
      */
     @TableField(exist = false)
-    private List<VoteImgDO> voteImgs;
+    private List<VoteImgDO> voteImages;
 }

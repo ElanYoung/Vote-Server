@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.starimmortal.vote.mapper.PlayerMapper">
+
+    <sql id="Base_Column_List">
+        id
+    </sql>
+    <select id="selectPlayerAllData" resultMap="PlayerAndImage">
+        select p.id          pid,
+               p.name        pname,
+               p.ticket_num  pticket_num,
+               p.user_id     puser_id,
+               p.vote_id     pvote_id,
+               p.create_time pcreate_time,
+               p.update_time pupdate_time,
+               p.delete_time pdelete_time,
+               pi.id         piid,
+               pi.player_id  piplayer_id,
+               pi.image      piimage
+        from tb_player p,
+             tb_player_img pi
+        where p.id = pi.player_id
+          and p.vote_id = #{voteId}
+    </select>
+
+    <resultMap id="PlayerAndImage" type="com.starimmortal.vote.pojo.PlayDO">
+        <result property="id" column="pid"/>
+        <result property="name" column="pname"/>
+        <result property="ticketNum" column="pticket_num"/>
+        <result property="userId" column="puser_id"/>
+        <result property="voteId" column="pvote_id"/>
+        <result property="createTime" column="vcreate_time"/>
+        <result property="updateTime" column="vupdate_time"/>
+        <result property="deleteTime" column="vdelete_time"/>
+
+        <collection property="playerImages" ofType="com.starimmortal.vote.pojo.PlayImgDO">
+            <result property="id" column="piid"/>
+            <result property="playerId" column="piplayer_id"/>
+            <result property="image" column="piimage"/>
+        </collection>
+    </resultMap>
+
+
+</mapper>

@@ -55,7 +55,7 @@
         <result property="updateTime" column="vupdate_time"/>
         <result property="deleteTime" column="vdelete_time"/>
 
-        <collection property="voteImgs" ofType="com.starimmortal.vote.pojo.VoteImgDO">
+        <collection property="voteImages" ofType="com.starimmortal.vote.pojo.VoteImgDO">
             <result property="id" column="iid"/>
             <result property="voteId" column="ivote_id"/>
             <result property="image" column="iimage"/>
