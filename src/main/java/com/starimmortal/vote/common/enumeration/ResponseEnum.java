@@ -15,7 +15,9 @@ public enum ResponseEnum {
 
     PARAM_ERROR(3, "参数错误"),
 
-    USER_INFO_ERROR(4, "用户信息错误");
+    USER_INFO_ERROR(4, "用户信息错误"),
+
+    TIME_ERROR(5,"已达上限次数");
 
 
     Integer code;

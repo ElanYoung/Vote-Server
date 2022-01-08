@@ -1,11 +1,9 @@
 package com.starimmortal.vote.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.starimmortal.vote.dto.LoginDTO;
 import com.starimmortal.vote.pojo.UserDO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * <p>
@@ -23,4 +21,19 @@ public interface UserMapper extends BaseMapper<UserDO> {
      * @return
      */
     UserDO selectByOpenid(String openid);
+
+    /**
+     * 更新投票数
+     * @param playerId
+     * @return
+     */
+    Integer updateTicketNum(@Param("player_id") Integer playerId);
+
+    /**
+     * 查询投票限制的次数
+     * @param voteId
+     * @return
+     */
+    Integer selectVoteNumLimit(@Param("vote_id") Integer voteId);
+
 }

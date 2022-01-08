@@ -2,7 +2,7 @@
 
 server:
   # 服务端口
-  port: 8080
+  port: 8081
 
 spring:
   # 文件编码 UTF8
@@ -11,8 +11,11 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/vote?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF8&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://111.229.73.167/vote?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF8&allowPublicKeyRetrieval=true
     username: "root"
+#    username: "vote"
     password: "123456"
+#    password: "William...123"
 
 mybatis-plus:
   configuration:

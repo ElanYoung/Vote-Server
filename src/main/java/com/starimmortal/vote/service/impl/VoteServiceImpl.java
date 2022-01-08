@@ -39,6 +39,7 @@ public class VoteServiceImpl extends ServiceImpl<VoteMapper, VoteDO> implements 
      */
     @Override
     public UnifyResponseVO<VoteDO> SaveAllVote(VoteAllDTO voteAllDTO) throws Exception {
+        System.out.println("voteAllDTO.getOpenid():"+voteAllDTO.getOpenid());
         //检测是否存在该id 存在则更新 不存在则插入
         if (voteAllDTO.getOpenid() != null) {
             /**

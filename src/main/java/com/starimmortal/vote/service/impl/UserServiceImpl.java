@@ -5,8 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.starimmortal.vote.common.enumeration.ResponseEnum;
 import com.starimmortal.vote.common.util.RestUtil;
 import com.starimmortal.vote.dto.LoginDTO;
+import com.starimmortal.vote.dto.VoteTimeDTO;
+import com.starimmortal.vote.mapper.VoteMapper;
+import com.starimmortal.vote.mapper.VoteTimeMapper;
 import com.starimmortal.vote.pojo.UserDO;
 import com.starimmortal.vote.mapper.UserMapper;
+import com.starimmortal.vote.pojo.VoteTimeDO;
 import com.starimmortal.vote.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.starimmortal.vote.vo.UnifyResponseVO;
@@ -14,11 +18,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * <p>
- *  用户服务实现类
+ * 用户服务实现类
  * </p>
  *
  * @author generator@StarImmortal
@@ -28,7 +30,18 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private VoteTimeMapper voteTimeMapper;
+    @Autowired
+    private VoteMapper voteMapper;
 
+    /**
+     * 用户登录检测
+     *
+     * @param dto
+     * @return
+     * @throws Exception
+     */
     @Override
     public UnifyResponseVO<UserDO> checkLogin(LoginDTO dto) throws Exception {
         //调用接口提取工具类
@@ -48,7 +61,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         System.out.println("userDo:" + userDO);
         //列出搜索结果
         UserDO userCheckResult = userMapper.selectByOpenid(userDO.getOpenid());
-        if (userCheckResult!=null) {
+        if (userCheckResult != null) {
             return UnifyResponseVO.success(userCheckResult);
         }
         //如果表中不含有该id，我们就添加入数据库
@@ -56,5 +69,32 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
             int num = userMapper.insert(userDO);
             return num > 0 ? UnifyResponseVO.success(userDO) : UnifyResponseVO.error(ResponseEnum.USER_INFO_ERROR);
         }
+    }
+
+    /**
+     * 用户投票
+     *
+     * @param voteTimeDTO
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public UnifyResponseVO<Integer> takeVoteUpdate(VoteTimeDTO voteTimeDTO) throws Exception {
+        VoteTimeDO voteTimeDO = new VoteTimeDO();
+        BeanUtils.copyProperties(voteTimeDTO, voteTimeDO);
+        //查询该表最大限制次数
+        Integer voteNumLimit = userMapper.selectVoteNumLimit(voteTimeDO.getVoteId());
+        //查询该表中该用户投了几次
+        Integer voteTime = voteTimeMapper.selectCountUserId(voteTimeDO.getUserId(),voteTimeDO.getVoteId());
+        if (voteTime < voteNumLimit) {
+            //将投票记录记录下来
+            voteTimeMapper.insert(voteTimeDO);
+            log.warn(voteTimeDTO.toString());
+            Integer integer = userMapper.updateTicketNum(voteTimeDTO.getPlayerId());
+            return UnifyResponseVO.success(integer);
+        } else {
+            return UnifyResponseVO.error(ResponseEnum.TIME_ERROR);
+        }
+
     }
 }

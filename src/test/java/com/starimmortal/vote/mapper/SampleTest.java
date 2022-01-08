@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @SpringBootTest
@@ -25,5 +26,14 @@ public class SampleTest {
         int insert = userService.getBaseMapper().insert(userDO);
 
 //        userService.updateById(userDO);
+    }
+
+    @Test
+    public void nortest2() {
+        String car=null;
+        Optional<String> s = Optional.of("123");
+        Optional optional = Optional.of(car);
+        System.out.println(s);
+        System.out.println(optional.isPresent());
     }
 }

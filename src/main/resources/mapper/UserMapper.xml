@@ -14,7 +14,8 @@
     <!--    </resultMap>-->
 
     <sql id="Base_Column_List">
-        id , openid, unionid, nickname, avatar_url, session_key, wx_profile, create_time, update_time,delete_time
+        id
+        , openid, unionid, nickname, avatar_url, session_key, wx_profile, create_time, update_time,delete_time
     </sql>
 
     <select id="selectByOpenid" resultType="com.starimmortal.vote.pojo.UserDO">
@@ -23,4 +24,17 @@
         from tb_user
         where openid = #{openid};
     </select>
+
+    <update id="updateTicketNum" parameterType="Integer">
+        update tb_player
+        set ticket_num=ticket_num + 1
+        where id = #{player_id}
+    </update>
+
+    <select id="selectVoteNumLimit" resultType="java.lang.Integer">
+        select vote_num_limit
+        from tb_vote
+        where id = #{vote_id}
+    </select>
+
 </mapper>
